@@ -7,13 +7,19 @@ import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const navItems = <>
         <li><NavLink className={({ isActive }) => (isActive ? 'bg-red-500 mb-2 md:mr-2' : ' mb-2 md:mr-2')} to='/'>Home</NavLink></li>
         <li><NavLink className={({ isActive }) => (isActive ? 'bg-red-500 mb-2 md:mr-2' : ' mb-2 md:mr-2')} to='/login'>Login</NavLink></li>
         <li><NavLink className={({ isActive }) => (isActive ? 'bg-red-500 mb-2 md:mr-2' : ' mb-2 md:mr-2')} to='/register'>Register</NavLink></li>
     </>
+
+const handleLogout = () => {
+    logOut()
+        .then()
+        .catch()
+}
 
     return (
         <div>
@@ -38,14 +44,17 @@ const Navbar = () => {
                     <div className="navbar-end">
                         {
                             user?
-                            <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
+                            <div className="dropdown dropdown-bottom dropdown-end">
                             <div tabIndex={0} className="avatar mx-3 mt-2 md:mt-0 lg:mt-0">
                                 <div className="w-10 rounded-full ring  ring-blue-500 ring-offset-2">
                                     <img src={user?.photoURL} />
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                 <p className="text-center text-blue-500 font-bold mt-2 md:mt-0 lg:mt-0">{user?.displayName}</p>
+                            <NavLink onClick={handleLogout} className="btn btn-primary btn-sm mt-3">
+                                    Logout
+                                </NavLink>
                             </ul>
                         </div>
                         :
