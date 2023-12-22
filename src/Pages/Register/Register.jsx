@@ -40,7 +40,7 @@ const Register = () => {
     }
 
     return (
-        <div className="w-[80%] mx-auto mt-12 flex flex-col md:flex-row ">
+        <div className=" mt-12 flex flex-col md:flex-row ">
             <div className="flex -1">
                 <img src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7965.jpg?w=740&t=st=1699331426~exp=1699332026~hmac=6d816b89eb279508c1125e4311b24edcd5f74dfd7a4320df2ac24b959cb34fdb" alt="" />
             </div>

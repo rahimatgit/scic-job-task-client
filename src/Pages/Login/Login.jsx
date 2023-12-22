@@ -43,7 +43,7 @@ const Login = () => {
 
 
     return (
-        <div className="w-[80%] mx-auto mt-12 flex flex-col md:flex-row items-center">
+        <div className="mt-12 flex flex-col md:flex-row items-center">
             <div className="flex-1">
                 <img src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-5267.jpg?w=740&t=st=1699332482~exp=1699333082~hmac=9fe2ad40670c44b74013a614998e112785f9580d0212c6b6dd93a72521c1c1ab" alt="" />
             </div>
