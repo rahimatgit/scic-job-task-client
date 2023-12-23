@@ -13,6 +13,9 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) => (isActive ? 'bg-red-500 mb-2 md:mr-2' : ' mb-2 md:mr-2')} to='/'>Home</NavLink></li>
         <li><NavLink className={({ isActive }) => (isActive ? 'bg-red-500 mb-2 md:mr-2' : ' mb-2 md:mr-2')} to='/login'>Login</NavLink></li>
         <li><NavLink className={({ isActive }) => (isActive ? 'bg-red-500 mb-2 md:mr-2' : ' mb-2 md:mr-2')} to='/register'>Register</NavLink></li>
+        {
+            user? <li><NavLink className={({ isActive }) => (isActive ? 'bg-red-500 mb-2 md:mr-2' : ' mb-2 md:mr-2')} to='/dashboard'>Dashboard</NavLink></li>: ""
+        }
     </>
 
 const handleLogout = () => {
