@@ -37,7 +37,7 @@ const handleLogout = () => {
                                 {navItems}
                             </ul>
                         </div>
-                        <a className="btn btn-ghost text-xl">daisyUI</a>
+                        <h1 className="text-xl md:text-3xl font-bold bg-green-200 px-3 py-1 rounded-full">Task<span className="text-blue-600">Wise</span></h1>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
