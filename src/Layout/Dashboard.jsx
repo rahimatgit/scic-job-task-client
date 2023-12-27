@@ -15,7 +15,7 @@ const Dashboard = () => {
                 <button className="btn btn-ghost rounded-full text-white text-sm md:text-xl"><Link to='/dashboard/create'>Create Task</Link></button>
                 <button className="btn btn-ghost rounded-full text-white text-sm md:text-xl"><Link to='/'>Home</Link></button>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 mb-12">
                 <Outlet></Outlet>
             </div>
         </div>

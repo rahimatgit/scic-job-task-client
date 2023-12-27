@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { v4 as uuidv4 } from 'uuid';
+import AllTask from "../AllTask/AllTask";
 
 const CreateTask = () => {
 
-    
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [tasks, setTasks] = useState([]);
     console.log(tasks);
@@ -15,9 +17,9 @@ const CreateTask = () => {
         status: "todo"
     });
 
-    useEffect( () => {
+    useEffect(() => {
         setTasks(JSON.parse(localStorage.getItem("tasks")))
-    } , [])
+    }, [])
 
     const onSubmit = data => {
         // console.log('created')
@@ -27,6 +29,13 @@ const CreateTask = () => {
             localStorage.setItem("tasks", JSON.stringify(list));
             return list;
         })
+        toast.success("Task Created!");
+        reset();
+        setTask({
+            id: "",
+            name: "",
+            status: "todo"
+        })
     }
 
     return (
@@ -35,8 +44,8 @@ const CreateTask = () => {
             <div>
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 justify-center items-center">
                     <input type="text" placeholder="Title" className="input input-bordered w-full max-w-xs input-info" {...register("title", { required: "title is required" })}
-                    value={task.name}
-                    onChange={(e) => setTask({...task, id: uuidv4(), name: e.target.value})}
+                        value={task.name}
+                        onChange={(e) => setTask({ ...task, id: uuidv4(), name: e.target.value })}
                     />
                     <input type="text" placeholder="Priority" className="input input-bordered w-full  max-w-xs input-info" {...register("priority", { required: "priority is required" })} />
                     <textarea {...register("description", { required: "description is required" })} className="textarea textarea-info w-full max-w-xs" placeholder="Description"></textarea>
@@ -49,6 +58,8 @@ const CreateTask = () => {
                     <button type="submit" className="btn btn-accent w-full max-w-xs text-white">Create</button>
                 </form>
             </div>
+            <AllTask tasks={tasks} setTasks={setTasks}></AllTask>
+            <Toaster></Toaster>
         </div>
     );
 };

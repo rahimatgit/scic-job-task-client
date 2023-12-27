@@ -2,13 +2,15 @@
 import { createContext, useEffect, useState } from "react";
 import app from '../../firebase/firebase.config';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -29,7 +31,7 @@ const AuthProvider = ({children}) => {
     const provider = new GoogleAuthProvider()
     const googleSignIn = () => {
         setLoading(true);
-        return  signInWithPopup(auth, provider);
+        return signInWithPopup(auth, provider);
     }
 
     // sign out
@@ -39,7 +41,7 @@ const AuthProvider = ({children}) => {
     }
 
     // manage user
-    useEffect( () => {
+    useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
@@ -47,12 +49,12 @@ const AuthProvider = ({children}) => {
         return () => {
             return unSubscribe();
         }
-    }, [] )
+    }, [])
 
 
     const authInfo = {
         user,
-        loading, 
+        loading,
         createUser,
         signIn,
         googleSignIn,
@@ -61,9 +63,11 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
+        <DndProvider backend={HTML5Backend}>
+            <AuthContext.Provider value={authInfo}>
+                {children}
+            </AuthContext.Provider>
+        </DndProvider>
     );
 };
 
