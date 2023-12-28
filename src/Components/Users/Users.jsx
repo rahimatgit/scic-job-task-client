@@ -14,11 +14,9 @@ const Users = () => {
         "Content Writer",
         "Architect",
         "Medical Doctor",
-        "Teacher/Educator",
+        "Teacher",
         "Legal Consultant",
         "Research Scientist",
-        "Civil Engineer",
-        "Digital Marketer",
         "Event Planner",
     ];
 
@@ -26,17 +24,12 @@ const Users = () => {
     return (
         <div className="my-12">
             <h2 className="text-3xl md:text-6xl font-bold text-center">Who Uses TaskWise?</h2>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
             {professions.map((profession, idx) => <div 
             key={idx} 
-            className="mt-8"
+            className="mt-8 bg-base-200 px-4 py-2 md:px-10 md:py-8 text-center rounded-lg text-lg md:text-xl font-bold"
             >
-                <div className="stack">
-                    <div className="text-center shadow-md w-40 card bg-green-300">
-                        <div className="card-body">{profession}</div>
-                    </div>
-                    
-                </div>
+                {profession}
             </div>)}
             </div>
         </div>
