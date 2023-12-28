@@ -22,7 +22,7 @@ const CreateTask = () => {
     }, [])
 
     const onSubmit = data => {
-        // console.log('created')
+        console.log('created')
 
         setTasks((prev) => {
             const list = [...prev, task];
@@ -47,7 +47,7 @@ const CreateTask = () => {
                         value={task.name}
                         onChange={(e) => setTask({ ...task, id: uuidv4(), name: e.target.value })}
                     />
-                    <input type="text" placeholder="Deadline" className="input input-bordered w-full  max-w-xs input-info" {...register("priority", { required: "priority is required" })} />
+                    <input type="text" placeholder="DeadlineF" className="input input-bordered w-full  max-w-xs input-info" {...register("priority", { required: "priority is required" })} />
                     <textarea {...register("description", { required: "description is required" })} className="textarea textarea-info w-full max-w-xs" placeholder="Description"></textarea>
                     <select {...register("priority", { required: "priority is required" })} className="select select-info w-full max-w-xs" placeholder="Select Priority">
                         <option disabled selected>Select Priority</option>
